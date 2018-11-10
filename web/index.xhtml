@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:jsf="http://xmlns.jcp.org/jsf"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+        <script>
+            function recarga() {
+                location.href = location.href
+            }
+            setInterval('recarga()', 20000)
+        </script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="../resource/css/growl.css" />     
+    </h:head>
+    <h:body>        
+        <div class="container" style=" width: 100%;">
+            <h2>Terminal Pereira</h2>            
+            <br></br>
+            <table class="table table-striped">
+                <thead>
+                    <tr class="bgcolor2">
+                        <td class="tblHeader"><center> Semaforo</center></td>
+                        <td class="tblHeader"><center> Hora</center></td>
+                        <td class="tblHeader"><center> Vehiculo</center></td>
+                        <td class="tblHeader"><center> Servicio</center></td>
+                        <td class="tblHeader"><center> Origen</center></td>
+                        <td class="tblHeader"><center> Destino</center></td>
+                        <td class="tblHeader"><center> Disponibles</center></td>
+                        <td class="tblHeader"><center> Ocupacion</center></td>
+                        <td class="tblHeader"><center> Estado</center></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ui:repeat var="objs" value="#{beanSemaforo.listAlarmas}">
+                        <tr>
+                            <td >
+                                <center>
+                                    <img src="resource/imagenes/verde.png" alt="" style="#{(objs.alarma=='Verde') ? 'display:block' : 'display:none'}"  />
+                                    <img src="resource/imagenes/amarillo.png" alt="" style="#{(objs.alarma=='Amarillo') ? 'display:block' : 'display:none'}"  />    
+                                    <img src="resource/imagenes/rojo.png" alt="" style="#{(objs.alarma=='Rojo') ? 'display:block' : 'display:none'}"  />    
+                                </center>
+                            </td>
+                            <td >
+                                <center>
+                                    <h:outputText value="#{objs.hora}" />
+                                </center>
+                            </td>
+                            <td >
+                                <center>
+                                    <h:outputText value="#{objs.bus}" />
+                                </center>
+                            </td>
+                            <td >
+                                <center>
+                                    <h:outputText value="#{objs.servicio}" />
+                                </center>
+                            </td>
+                            <td >
+                                <center>
+                                    <h:outputText value="#{objs.origen}" />
+                                </center>
+                            </td>
+                            <td >
+                                <center>
+                                    <h:outputText value="#{objs.destino}" />
+                                </center>
+                            </td>
+                            <td >
+                                <center>
+                                    <h:outputText value="#{objs.butacasLibres}" />
+                                </center>
+                            </td>
+                            <td >
+                                <center>
+                                    <h:outputText value="#{objs.butacasOcupadas}" />
+                                </center>
+                            </td>
+                            <td >
+                                <center>
+                                    <h:outputText value="#{objs.estado}" />
+                                </center>
+                            </td>              
+                        </tr>
+                    </ui:repeat>
+
+                </tbody>
+            </table>
+        </div>
+
+    </h:body>
+</html>
+
